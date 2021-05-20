@@ -1,4 +1,3 @@
-const { v4: uuidv4 } = require('uuid');
 const AWS = require('aws-sdk');
 
 AWS.config.update({
@@ -11,14 +10,12 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 
 const params = {
   TableName: 'Post',
-  Item: {
-    id: uuidv4(),
-    title: 'title1',
-    body: 'body1',
+  Key: {
+    id: 'b8b97083-4f31-4f98-acd8-f739db2b0e35',
   },
 };
 
-docClient.put(params, (err, data) => {
+docClient.delete(params, function (err, data) {
   if (err) {
     console.log(err);
   } else {

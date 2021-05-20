@@ -14,19 +14,11 @@ const params = {
       AttributeName: 'id',
       AttributeType: 'S',
     },
-    {
-      AttributeName: 'timestamp',
-      AttributeType: 'N',
-    },
   ],
   KeySchema: [
     {
       AttributeName: 'id',
       KeyType: 'HASH',
-    },
-    {
-      AttributeName: 'timestamp',
-      KeyType: 'RANGE',
     },
   ],
   ProvisionedThroughput: {
