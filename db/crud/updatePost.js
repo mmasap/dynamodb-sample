@@ -1,4 +1,3 @@
-const { v4: uuidv4 } = require('uuid');
 const AWS = require('aws-sdk');
 
 AWS.config.update({
@@ -11,14 +10,17 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 
 const params = {
   TableName: 'Post',
-  Item: {
-    id: uuidv4(),
-    title: 'title1',
-    body: 'body1',
+  Key: {
+    id: 'b8b97083-4f31-4f98-acd8-f739db2b0e35',
+  },
+  UpdateExpression: 'set title = :t, body = :b',
+  ExpressionAttributeValues: {
+    ':t': 'update title',
+    ':b': 'update body',
   },
 };
 
-docClient.put(params, (err, data) => {
+docClient.update(params, (err, data) => {
   if (err) {
     console.log(err);
   } else {
